@@ -11,7 +11,7 @@
 
 @interface BRBaseView ()
 // 蒙层视图
-@property (nonatomic, strong) UIView *maskView;
+@property (nonatomic, strong) UIView *mymaskView;
 // 标题栏背景视图
 @property (nonatomic, strong) UIView *titleBarView;
 // 左边取消按钮
@@ -36,7 +36,7 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     if (!self.pickerStyle.hiddenMaskView) {
-        [self addSubview:self.maskView];
+        [self addSubview:self.mymaskView];
     }
     
     [self addSubview:self.alertView];
@@ -104,17 +104,17 @@
 }
 
 #pragma mark - 蒙层视图
-- (UIView *)maskView {
-    if (!_maskView) {
-        _maskView = [[UIView alloc]initWithFrame:self.keyView.bounds];
-        _maskView.backgroundColor = self.pickerStyle.maskColor;
+- (UIView *)mymaskView {
+    if (!_mymaskView) {
+        _mymaskView = [[UIView alloc]initWithFrame:self.keyView.bounds];
+        _mymaskView.backgroundColor = self.pickerStyle.maskColor;
         // 设置子视图的大小随着父视图变化
-        _maskView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _maskView.userInteractionEnabled = YES;
+        _mymaskView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _mymaskView.userInteractionEnabled = YES;
         UITapGestureRecognizer *myTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapMaskView:)];
-        [_maskView addGestureRecognizer:myTap];
+        [_mymaskView addGestureRecognizer:myTap];
     }
-    return _maskView;
+    return _mymaskView;
 }
 
 #pragma mark - 弹框视图
